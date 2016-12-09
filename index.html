@@ -1,190 +1,2805 @@
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="for UE4" />
-  <title>MSSQL Intergration for UE4</title>
-  <style type="text/css">code{white-space: pre;}</style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../theme/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../theme/css/theme.css">
-  
-    <script src="../theme/js/jquery.min.js"></script>
-    <script src="../theme/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../Styles/defaultstyles.css">
-  <style>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+<link rel=File-List href="User%20Manual_files/filelist.xml">
+<link rel=Edit-Time-Data href="User%20Manual_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Kundu, Sameek (Cognizant)</o:Author>
+  <o:LastAuthor>sameek1@yahoo.com</o:LastAuthor>
+  <o:Revision>77</o:Revision>
+  <o:TotalTime>9332</o:TotalTime>
+  <o:Created>2016-12-02T15:04:00Z</o:Created>
+  <o:LastSaved>2016-12-09T15:19:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1916</o:Words>
+  <o:Characters>10923</o:Characters>
+  <o:Lines>91</o:Lines>
+  <o:Paragraphs>25</o:Paragraphs>
+  <o:CharactersWithSpaces>12814</o:CharactersWithSpaces>
+  <o:Version>15.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=themeData href="User%20Manual_files/themedata.thmx">
+<link rel=colorSchemeMapping href="User%20Manual_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>95</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="371">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
 <!--
  /* Font Definitions */
  @font-face
 	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 415 0;}
 @font-face
 	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
 @font-face
-	{font-family:"Century Schoolbook";
-	panose-1:2 4 6 4 5 5 5 2 3 4;}
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-469750017 -1073683329 9 0 511 0;}
 @font-face
-	{font-family:"Arial Rounded MT Bold";
-	panose-1:2 15 7 4 3 5 4 3 2 4;}
+	{font-family:"Browallia New";
+	mso-font-alt:"Arial Unicode MS";
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 65537 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Leelawadee UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;
+	mso-font-alt:"Times New Roman";
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1560281085 0 65536 0 65793 0;}
+@font-face
+	{font-family:"Comic Sans MS";
+	panose-1:3 15 7 2 3 3 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 1073741843 0 0 159 0;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:8.0pt;
 	margin-left:0cm;
-	line-height:107%;
+	line-height:105%;
+	mso-pagination:widow-orphan;
 	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
 h1
-	{mso-style-link:"Heading 1 Char";
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
 	margin-top:12.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
 	margin-left:0cm;
 	margin-bottom:.0001pt;
-	line-height:107%;
+	line-height:105%;
+	mso-pagination:widow-orphan;
 	page-break-after:avoid;
+	mso-outline-level:1;
 	font-size:16.0pt;
 	font-family:"Calibri Light",sans-serif;
-	color:#2E74B5;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#1481AB;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
 	font-weight:normal;}
 h2
-	{mso-style-link:"Heading 2 Char";
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
 	margin-top:2.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
 	margin-left:0cm;
 	margin-bottom:.0001pt;
-	line-height:107%;
+	line-height:105%;
+	mso-pagination:widow-orphan;
 	page-break-after:avoid;
+	mso-outline-level:2;
 	font-size:13.0pt;
 	font-family:"Calibri Light",sans-serif;
-	color:#2E74B5;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#1481AB;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
 	font-weight:normal;}
+h3
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#0D5571;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Footer Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-priority:35;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	color:#335B74;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;}
 p.MsoTitle, li.MsoTitle, div.MsoTitle
-	{mso-style-link:"Title Char";
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
 	margin:0cm;
 	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
 	font-size:28.0pt;
 	font-family:"Calibri Light",sans-serif;
-	letter-spacing:-.5pt;}
-p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
-	{mso-style-link:"Title Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:28.0pt;
-	font-family:"Calibri Light",sans-serif;
-	letter-spacing:-.5pt;}
-p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
-	{mso-style-link:"Title Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:28.0pt;
-	font-family:"Calibri Light",sans-serif;
-	letter-spacing:-.5pt;}
-p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
-	{mso-style-link:"Title Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:28.0pt;
-	font-family:"Calibri Light",sans-serif;
-	letter-spacing:-.5pt;}
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.5pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
 p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
-	{mso-style-link:"Subtitle Char";
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:8.0pt;
 	margin-left:0cm;
-	line-height:107%;
+	line-height:105%;
+	mso-pagination:widow-orphan;
 	font-size:11.0pt;
 	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
 	color:#5A5A5A;
-	letter-spacing:.75pt;}
+	letter-spacing:.75pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#6EAC1C;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#B26B02;
+	text-decoration:underline;
+	text-underline:single;}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-priority:1;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Quote Char";
+	margin-top:10.0pt;
+	margin-right:43.2pt;
+	margin-bottom:8.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	color:#404040;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;}
 p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
-	{mso-style-link:"Intense Quote Char";
+	{mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Intense Quote Char";
 	margin-top:18.0pt;
 	margin-right:43.2pt;
 	margin-bottom:18.0pt;
 	margin-left:43.2pt;
 	text-align:center;
-	line-height:107%;
-	border:none;
-	padding:0cm;
+	line-height:105%;
+	mso-pagination:widow-orphan;
 	font-size:11.0pt;
 	font-family:"Calibri",sans-serif;
-	color:#5B9BD5;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	color:#1CADE4;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
 	font-style:italic;}
+span.MsoSubtleEmphasis
+	{mso-style-priority:19;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:#404040;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{mso-style-priority:21;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:#1CADE4;
+	font-style:italic;}
+span.MsoIntenseReference
+	{mso-style-priority:32;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#5B9BD5;
+	mso-themecolor:accent1;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-hansi-font-family:"Calibri Light";
+	color:#1481AB;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-hansi-font-family:"Calibri Light";
+	color:#1481AB;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-hansi-font-family:"Calibri Light";
+	color:#0D5571;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;}
 span.TitleChar
 	{mso-style-name:"Title Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
 	mso-style-link:Title;
 	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-hansi-font-family:"Calibri Light";
 	letter-spacing:-.5pt;}
 span.SubtitleChar
 	{mso-style-name:"Subtitle Char";
+	mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
 	mso-style-link:Subtitle;
 	font-family:"Times New Roman",serif;
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
 	color:#5A5A5A;
 	letter-spacing:.75pt;}
-span.Heading2Char
-	{mso-style-name:"Heading 2 Char";
-	mso-style-link:"Heading 2";
-	font-family:"Calibri Light",sans-serif;
-	color:#2E74B5;}
-span.Heading1Char
-	{mso-style-name:"Heading 1 Char";
-	mso-style-link:"Heading 1";
-	font-family:"Calibri Light",sans-serif;
-	color:#2E74B5;}
+span.QuoteChar
+	{mso-style-name:"Quote Char";
+	mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Quote;
+	color:#404040;
+	font-style:italic;}
 span.IntenseQuoteChar
 	{mso-style-name:"Intense Quote Char";
+	mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
 	mso-style-link:"Intense Quote";
-	color:#5B9BD5;
+	color:#1CADE4;
 	font-style:italic;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.5pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.5pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.5pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msolistparagraphcxspfirst, li.msolistparagraphcxspfirst, div.msolistparagraphcxspfirst
+	{mso-style-name:msolistparagraphcxspfirst;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msolistparagraphcxspmiddle, li.msolistparagraphcxspmiddle, div.msolistparagraphcxspmiddle
+	{mso-style-name:msolistparagraphcxspmiddle;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msolistparagraphcxsplast, li.msolistparagraphcxsplast, div.msolistparagraphcxsplast
+	{mso-style-name:msolistparagraphcxsplast;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.msopapdefault, li.msopapdefault, div.msopapdefault
+	{mso-style-name:msopapdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:105%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;
+	mso-style-unhide:no;}
+span.code-keyword
+	{mso-style-name:code-keyword;
+	mso-style-unhide:no;}
+span.code-digit
+	{mso-style-name:code-digit;
+	mso-style-unhide:no;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
 .MsoChpDefault
-	{font-family:"Calibri",sans-serif;}
-.MsoPapDefault
-	{margin-bottom:8.0pt;
-	line-height:107%;}
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
 @page WordSection1
 	{size:595.3pt 841.9pt;
-	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
 -->
 </style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
 
- </head>
-  
-<body lang=EN-GB>
+<body lang=EN-GB link="#6EAC1C" vlink="#B26B02" style='tab-interval:36.0pt'>
 
 <div class=WordSection1>
 
-<p class=MsoTitle align=center style='text-align:center'><span lang=EN-US
-style='font-family:"Century Schoolbook",serif'>MS-SQL Integration</span></p>
+<p class=MsoTitle align=center style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:center'><span
+lang=EN-US><o:p>&nbsp;</o:p></span></p>
 
-<h1 align=center style='text-align:center'><span lang=EN-US style='font-family:
-"Arial Rounded MT Bold",sans-serif'>In Unreal Engine 4</span></h1>
+<p class=MsoTitle align=center style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:center'><span
+lang=EN-US><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoTitle align=center style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:center'><span
+lang=EN-US>MS-SQL Integration</span></p>
 
-<div style='border-top:solid #5B9BD5 1.0pt;border-left:none;border-bottom:solid #5B9BD5 1.0pt;
-border-right:none;padding:10.0pt 0cm 10.0pt 0cm;margin-left:43.2pt;margin-right:
-43.2pt'>
+<h1 align=center style='margin-top:12.0pt;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:center'><span
+lang=EN-US style='mso-fareast-font-family:"Times New Roman"'>In Unreal Engine 4<o:p></o:p></span></h1>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US>&nbsp;</span></p>
+
+<div style='border-top:solid #1CADE4 1.0pt;border-left:none;border-bottom:solid #1CADE4 1.0pt;
+border-right:none;padding:10.0pt 0cm 10.0pt 0cm;margin-left:216.0pt;margin-right:
+216.0pt'>
 
 <p class=MsoIntenseQuote style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
-18.0pt;margin-left:0cm'><span lang=EN-US style='font-size:26.0pt;line-height:
-107%'>User Manual</span></p>
+18.0pt;margin-left:0cm'><span lang=EN-US style='font-size:48.0pt;line-height:
+105%;color:#2E75B6;mso-themecolor:accent1;mso-themeshade:191;mso-style-textfill-fill-color:
+#2E75B6;mso-style-textfill-fill-themecolor:accent1;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=75000;font-style:normal;
+mso-bidi-font-style:italic'><span style='color:windowtext'><span
+style='mso-spacerun:yes'> </span>User Manual<o:p></o:p></span></span></p>
 
 </div>
 
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:48.0pt;line-height:105%;
+color:#2E75B6;mso-themecolor:accent1;mso-themeshade:191;mso-style-textfill-fill-color:
+#2E75B6;mso-style-textfill-fill-themecolor:accent1;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=75000;mso-ansi-language:
+EN-GB;font-style:normal'><span style='color:windowtext'>&nbsp;</span></span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='font-size:48.0pt;
+line-height:105%;color:#2E75B6;mso-themecolor:accent1;mso-themeshade:191;
+mso-style-textfill-fill-color:#2E75B6;mso-style-textfill-fill-themecolor:accent1;
+mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=75000'><o:p></o:p></span></i></p>
 
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>MS-SQL Integration is a plugin that
+lets you connect to your SQL Server database, and store and retrieve data from
+the server via SQL queries, directly from the Blueprint. This plugin brings the
+power of C#.NET in Unreal Engine 4.&nbsp;</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>If you have worked with MS SQL
+Server, you must be very familiar with writing Select, Update, Insert and
+Delete SQL queries, using joins and sub-queries. If you know C#.Net, and worked
+with ADO.Net, you must be knowing how to set Connection properties for your SQL
+Server, and how to write and execute your SQL Queries within your .NET
+application.</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>But now you can use Blueprints in
+Unreal Engine 4 to do your job. You are still writing the same queries that you
+are familiar with, but here you are writing it within Blueprints, which gives
+you flexibility to store and retrieve data as well as Images from your SQL
+Server to your UE4 game.&nbsp; </span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:12.0pt;line-height:105%;font-family:"Browallia New",sans-serif;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span></p>
+
+<p class=MsoListParagraph align=center style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:8.0pt;margin-left:226.75pt;text-align:center'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>If you are not familiar with SQL Server at all, you will get plenty of
+online resources to get you started, and you can definitely test it out by
+downloading SQL Server Express.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>SQL Server Express is an entry level database server having a
+limitation of 10 GB size, which is perfect from small scale applications.</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>Here I will be explaining you in details how to set up your database
+connection and how to write and execute SQL queries from UE4. &nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;<o:p></o:p></span></span></p>
+
+<p class=MsoIntenseQuote style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+18.0pt;margin-left:0cm'><em><span style='font-size:22.0pt;line-height:105%;
+font-family:"Calibri",sans-serif;mso-ansi-language:EN-GB'>Working with SQL
+Server Express</span></em></p>
+
+<p class=MsoNormal style='margin-left:226.75pt'><span style='mso-ansi-language:
+EN-GB'>&nbsp;</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+margin-left:216.0pt;margin-right:216.0pt'>
+
+<p class=MsoCaption style='margin-left:226.75pt'><span class=MsoSubtleEmphasis><b><span
+style='font-size:12.0pt;font-family:"Bookman Old Style",serif;color:black;
+mso-ansi-language:EN-GB;font-style:normal'>If you already have your database
+and tables ready to be integrated with your UE4 project, you may skip this
+section</span></b></span><span class=MsoSubtleEmphasis><b><span
+style='font-size:12.0pt;font-family:"Bookman Old Style",serif;color:black;
+mso-ansi-language:EN-GB'>.</span></b></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>Assuming that you have your database server up and running, either
+locally or remotely, to get started working with this plugin, you first need to
+create a database and a table in your server, where you would like to store all
+your in-game data. </span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>If you are unsure regarding how to work with SQL Express, let me
+quickly walk you through the basic steps.</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>1&gt;</span></span><span
+class=MsoSubtleEmphasis><span style='font-size:7.0pt;line-height:105%;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>Download and install SQL Server
+Express edition from the below link:</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US><a
+href="https://go.microsoft.com/fwlink/?LinkID=799012"><span lang=EN-GB
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>https://go.microsoft.com/fwlink/?LinkID=799012</span></a></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoListParagraph style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>2&gt;</span></span><span
+class=MsoSubtleEmphasis><span style='font-size:7.0pt;line-height:105%;
+font-family:"Times New Roman",serif;mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>Open your SQL Server client and
+connect to your database server by using Windows Authentication or SQL Server
+authentication.</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0cm;margin-right:216.0pt;
+margin-bottom:0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:center'><span
+style='mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1038" type="#_x0000_t75" style='width:319.5pt;
+ height:246pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image001.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=426 height=328
+src="User%20Manual_files/image002.gif" v:shapes="_x0000_i1038"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:justify'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;By default, you will get a
+local DB server called </span></span><span class=SpellE><span
+class=MsoSubtleEmphasis><b><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB'>locahost</span></b></span></span><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>, which will be saved in your local
+machine. To create a dedicated server, please go through the steps given in the
+below link: </span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:justify'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+style='mso-spacerun:yes'>                   </span>&nbsp;&nbsp; </span></span><span
+lang=EN-US><a
+href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started"><span
+lang=EN-GB style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started</span></a></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>To understand how to create a login, please visit the below link:</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span lang=EN-US><a
+href="https://msdn.microsoft.com/en-in/library/aa337562.aspx"><span lang=EN-GB
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>https://msdn.microsoft.com/en-in/library/aa337562.aspx</span></a></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>3&gt;Once you are connected to the server, you need to create a new
+database. Visit the below link to help you out with the database creation:</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span
+lang=EN-US><a href="https://msdn.microsoft.com/en-us/library/ms186312.aspx"><span
+lang=EN-GB style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>https://msdn.microsoft.com/en-us/library/ms186312.aspx</span></a></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>4&gt;Once your database is created, it should be visible in object
+explorer, within <b>Databases.</b></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>Right click on your database name, and open New Query Window. Then create
+one or more tables, which you want to use for storing and retrieving your game
+data. Below is a simple query that lets you create a table called <span
+class=GramE><b>Products</b>.</span> (Source - </span></span><span lang=EN-US><a
+href="https://msdn.microsoft.com/en-us/library/ms365315.aspx"><span lang=EN-GB
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>https://msdn.microsoft.com/en-us/library/ms365315.aspx</span></a></span><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>)</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>CREATE
+TABLE <span class=SpellE>dbo.Products</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>(</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductID</span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:black'> <span class=SpellE>int</span> PRIMARY
+KEY NOT NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductName</span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:black'> <span class=GramE>varchar(</span>25)
+NOT NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>Price
+money NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductDescription</span></span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:black'> text NULL</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>GO<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
+
+<p class=MsoIntenseQuote style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+18.0pt;margin-left:0cm'><em><span style='font-size:22.0pt;line-height:105%;
+font-family:"Calibri",sans-serif;mso-ansi-language:EN-GB'>Setting Up Database
+Connection in UE4</span></em></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>Before we begin writing our SQL queries and executing them in our
+database, we first need to set up a connection within UE4. This is a onetime
+setup, and is similar to how we manually connect to our DB Server using Windows
+or SQL Server Authentication, as shown in the above steps.<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>Authentication Modes<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>To set up a DB Connection, we either need to use Windows Authentication
+mode or SQL Authentication mode. <span style='mso-spacerun:yes'> </span><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+105%;mso-ansi-language:EN-GB;mso-bidi-font-style:normal'>Windows Authentication
+mode</span></b></span><span class=MsoSubtleEmphasis><span style='font-size:
+14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:normal'>
+authenticates users to use the Database server via Windows Login ID and
+Password. The following functions are needed to setup a Windows Authentication.<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'>Get Current
+User – <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'><span
+style='mso-spacerun:yes'>           </span></span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%'>This function returns the current
+Windows User Name.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><span
+style='mso-spacerun:yes'>         </span></span><span style='mso-ansi-language:
+EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_3" o:spid="_x0000_i1037" type="#_x0000_t75" style='width:129pt;
+ height:54.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=172 height=73
+src="User%20Manual_files/image004.gif" v:shapes="Picture_x0020_3"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><span
+style='mso-spacerun:yes'>                                                                                                                                     
+</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'>Get Current
+Domain – <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'><span
+style='mso-spacerun:yes'>  </span><span
+style='mso-spacerun:yes'>         </span></span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%'>This function returns the current PC
+Domain <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><span
+style='mso-spacerun:yes'>       </span></span><span style='mso-ansi-language:
+EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_5" o:spid="_x0000_i1036" type="#_x0000_t75" style='width:136.5pt;
+ height:60.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image005.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=182 height=81
+src="User%20Manual_files/image006.gif" v:shapes="Picture_x0020_5"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+105%;mso-ansi-language:EN-GB;font-style:normal'>Authenticate User</span></b></span><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'> – <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'><span
+style='mso-spacerun:yes'>           </span></span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%'>This function takes the current user
+name, domain and password for your Windows account as input and returns the
+authentication result as a Boolean variable.<span style='mso-spacerun:yes'> 
+</span>Please note that this function will not work if the current Windows user
+does not require any password to login. So you may want to avoid using this
+function unless absolutely necessary.<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span style='mso-ansi-language:
+EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_4" o:spid="_x0000_i1035" type="#_x0000_t75" style='width:272.25pt;
+ height:173.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image007.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=363 height=231
+src="User%20Manual_files/image008.gif" v:shapes="Picture_x0020_4"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+105%;mso-ansi-language:EN-GB;mso-bidi-font-style:normal'>SQL Server
+Authentication mode </span></b></span><span lang=EN-US style='font-size:14.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:
+"Segoe UI";color:#2A2A2A'>uses logins that are created and stored in SQL Server
+and are not based on Windows user accounts. Here you need to explicitly enter
+both your SQL Server ID and password, while setting up the connection property.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><span style='mso-spacerun:yes'>  </span>To learn about
+Authentication modes in detail, you can refer to the below link:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:540.0pt;margin-bottom:.0001pt;text-indent:36.0pt'><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><a
+href="https://msdn.microsoft.com/en-us/library/ms144284.aspx">https://msdn.microsoft.com/en-us/library/ms144284.aspx</a><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>SQL SERVER CONNECTION<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>To connect to the SQL Server, we first need to set the connection properties.
+For that, we need to call the function called <b style='mso-bidi-font-weight:
+normal'>Set Connection Properties </b>as shown below, which forms a valid
+connection string that will later be used to access the given database. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:18.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;color:#404040;
+mso-themecolor:text1;mso-themetint:191;mso-style-textfill-fill-color:#404040;
+mso-style-textfill-fill-themecolor:text1;mso-style-textfill-fill-alpha:100.0%;
+mso-style-textfill-fill-colortransforms:"lumm=75000 lumo=25000"'>Inputs<o:p></o:p></span></b></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Server</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> – Here you need to enter you Server address. If the server is
+your local machine, then it is <b style='mso-bidi-font-weight:normal'><i
+style='mso-bidi-font-style:normal'>localhost</i></b> by default. If you have
+hosted your server in your web service or using the steps described <a
+href="https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started">here</a>,
+you must be having your dedicated server name. You need to enter that here.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=SpellE><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>DBName</span></b></span><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'> </span></b><span
+lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>–This is your Database name where you want to set up your initial
+connection. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>User ID</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –If you are using Windows Authentication, you need to pass the
+value returned from the function <b style='mso-bidi-font-weight:normal'><i
+style='mso-bidi-font-style:normal'>Get Current User</i></b>. For SQL Server
+Authentication, you need to pass your SQL Server user name here.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Password</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –For Windows Authentication, this will be your Windows Login
+password. For Server Authentication, this is your SQL Server password.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Domain</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –This only comes into play when you are using Windows
+Authentication mode. You will get you PC domain by calling the function <b
+style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'>Get
+Current Domain</i></b>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Is Trusted</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –A Windows Authentication is referred to as a trusted connection
+to the database, since any user can login from their Windows user accounts.
+This should be <b style='mso-bidi-font-weight:normal'>checked</b> if you are
+using Windows Authentication mode. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:18.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;color:#404040;
+mso-themecolor:text1;mso-themetint:191;mso-style-textfill-fill-color:#404040;
+mso-style-textfill-fill-themecolor:text1;mso-style-textfill-fill-alpha:100.0%;
+mso-style-textfill-fill-colortransforms:"lumm=75000 lumo=25000"'>Outputs<o:p></o:p></span></b></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Is Success</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –This will return true if the database connection has been
+successfully established, else false.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Error Message</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> –This will be empty if connection to the database is successful,
+else it will contain the exception message.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%;font-weight:normal;mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>&nbsp;</span></span><span style='mso-ansi-language:EN-GB;mso-fareast-language:
+EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_6"
+ o:spid="_x0000_i1034" type="#_x0000_t75" style='width:1044pt;height:441pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image009.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1392 height=588
+src="User%20Manual_files/image010.jpg" v:shapes="Picture_x0020_6"><![endif]></span><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoIntenseQuote style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+18.0pt;margin-left:0cm'><span lang=EN-US style='font-size:14.0pt;line-height:
+105%;font-family:"Leelawadee UI",sans-serif;mso-bidi-font-family:"Times New Roman";
+color:black'>&nbsp;</span><em><span style='font-size:22.0pt;line-height:105%;
+font-family:"Calibri",sans-serif;mso-ansi-language:EN-GB'>Writing SQL queries
+within UE4 Blueprints<o:p></o:p></span></em></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;color:windowtext;font-style:normal;
+mso-bidi-font-style:italic'>Once the connection property has been set, you can now
+start forming your SQL queries. Forming queries can be categorized in two
+types, queries that modify data to the database (INSERT, UPDATE, DELETE), or
+the queries that fetch data from the database (SELECT). We will discuss these
+two categories one by one.<o:p></o:p></span></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;color:windowtext;font-style:normal;
+mso-bidi-font-style:italic'>Let us say we have a created a table in our
+database called <b style='mso-bidi-font-weight:normal'>Products</b> by using
+the below query:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>CREATE
+TABLE <span class=SpellE>dbo.Products</span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>(</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductID</span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:black'> <span class=SpellE>int</span> PRIMARY
+KEY NOT NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductName</span></span><span lang=EN-US style='font-size:10.0pt;
+font-family:"Courier New";color:black'> <span class=GramE>varchar(</span>25)
+NOT NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>Price
+money NULL,</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+class=SpellE><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'>ProductDescription</span></span><span lang=EN-US style='font-size:
+10.0pt;font-family:"Courier New";color:black'> text NULL</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;line-height:normal'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New";color:black'>)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'>We will take this table as a reference to form our queries and discuss
+the two categories of query formation.<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><span style='color:windowtext'>Please note, the
+functions that you need to perform query execution in your server will usually
+have two common outputs:<o:p></o:p></span></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin;color:#203864;mso-themecolor:accent5;
+mso-themeshade:128;mso-style-textfill-fill-color:#203864;mso-style-textfill-fill-themecolor:
+accent5;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=50000;mso-ansi-language:EN-GB;font-style:normal'><span style='color:windowtext'>Is
+Success</span></span></b></span><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><span style='color:windowtext'> –This will return
+false if the query execution fails<o:p></o:p></span></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin;color:#203864;mso-themecolor:accent5;
+mso-themeshade:128;mso-style-textfill-fill-color:#203864;mso-style-textfill-fill-themecolor:
+accent5;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=50000;mso-ansi-language:EN-GB;font-style:normal'><span style='color:windowtext'>Error
+Message</span></span></b></span><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><span style='color:windowtext'> –This will have the
+exception message that will be thrown at the SQL server end. If the query
+execution is successful, this will be an empty string.<o:p></o:p></span></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:340.15pt;margin-bottom:
+0cm;margin-left:340.15pt;margin-bottom:.0001pt'><span class=MsoSubtleEmphasis><span
+style='font-size:14.0pt;line-height:105%;font-family:"Comic Sans MS";
+color:#203864;mso-themecolor:accent5;mso-themeshade:128;mso-style-textfill-fill-color:
+#203864;mso-style-textfill-fill-themecolor:accent5;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=50000;mso-ansi-language:
+EN-GB;font-style:normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>UPDATE QUERIES<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;text-align:justify;line-height:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;color:windowtext;font-style:normal;
+mso-bidi-font-style:italic'>To modify data in our table <b style='mso-bidi-font-weight:
+normal'>Products</b>, we will use the function <b style='mso-bidi-font-weight:
+normal'>Update data from Query</b>, which takes a string input where we have to
+enter our query and executes the query in the database.<o:p></o:p></span></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span
+style='font-size:14.0pt;line-height:105%;color:windowtext;mso-ansi-language:
+EN-GB;mso-fareast-language:EN-GB;font-style:normal;mso-bidi-font-style:italic;
+mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_9" o:spid="_x0000_i1033"
+ type="#_x0000_t75" style='width:417pt;height:234pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image011.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=556 height=312
+src="User%20Manual_files/image012.gif" v:shapes="Picture_x0020_9"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%;color:windowtext;
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>A typical way of forming a simple Insert query is shown below. <o:p></o:p></span></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span
+style='font-size:14.0pt;line-height:105%;color:windowtext;mso-ansi-language:
+EN-GB;mso-fareast-language:EN-GB;font-style:normal;mso-bidi-font-style:italic;
+mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_7" o:spid="_x0000_i1032"
+ type="#_x0000_t75" style='width:1118.25pt;height:321pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image013.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1491 height=428
+src="User%20Manual_files/image014.jpg" v:shapes="Picture_x0020_7"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%;color:windowtext;
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='mso-ansi-language:EN-GB;mso-bidi-font-style:
+normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>SELECT QUERIES<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:648.0pt;margin-bottom:.0001pt;text-align:justify;line-height:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoIntenseQuote align=left style='margin-top:18.0pt;margin-right:226.75pt;
+margin-bottom:18.0pt;margin-left:226.75pt;text-align:left'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;color:windowtext;font-style:normal;
+mso-bidi-font-style:italic'>The function <b style='mso-bidi-font-weight:normal'>Select
+Data from Query </b>takes a string input, where we have to enter our Select
+Query, and returns an array of structured variable of the type </span><span
+class=SpellE><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;color:windowtext'>SQLDataTable</span></b></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%;color:windowtext;
+font-style:normal;mso-bidi-font-style:italic'>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US>&nbsp;</span><span
+style='mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_14" o:spid="_x0000_i1031" type="#_x0000_t75" style='width:471pt;
+ height:252.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image015.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=628 height=337
+src="User%20Manual_files/image016.gif" v:shapes="Picture_x0020_14"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>The structure <span class=SpellE><b style='mso-bidi-font-weight:
+normal'><i style='mso-bidi-font-style:normal'>SQLDataTable</i></b></span>
+represents a column in the table that gets returned while executing the
+function <b style='mso-bidi-font-weight:normal'>Select Data from Query</b> with
+valid query input. This structure contains two parameters, <span class=SpellE><b
+style='mso-bidi-font-weight:normal'>ColumnName</b></span> and <span
+class=SpellE><b style='mso-bidi-font-weight:normal'>ColumnData</b></span>. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_15" o:spid="_x0000_i1030" type="#_x0000_t75" style='width:1200pt;
+ height:276pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image017.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1600 height=368
+src="User%20Manual_files/image018.jpg" v:shapes="Picture_x0020_15"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span class=SpellE><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'>ColumnName</span></b></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'> contains the header name
+of the column of the current instance of our initial array that we get by
+executing our select query. If you want to display data of a specific column,
+you can use this variable to match the column name, as shown below. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='mso-ansi-language:EN-GB;mso-fareast-language:
+EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_12"
+ o:spid="_x0000_i1029" type="#_x0000_t75" style='width:1065.75pt;height:474.75pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image019.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1421 height=633
+src="User%20Manual_files/image020.gif" v:shapes="Picture_x0020_12"><![endif]></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span class=SpellE><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%'>ColumnData</span></b></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'> is an array of string consisting
+of all the elements of a given column. So you can easily set up a for-loop here
+to get all the elements of a particular column iteratively.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><b style='mso-bidi-font-weight:normal'><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>Please note that there is no restriction of using select
+query with this function. Any Select query working within SQL client will work
+here just fine.<o:p></o:p></span></i></b></p>
+
+<p class=MsoIntenseQuote style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+18.0pt;margin-left:0cm'><em><span style='font-size:22.0pt;line-height:105%;
+font-family:"Calibri",sans-serif;mso-ansi-language:EN-GB'>Storing and
+Retrieving Images from SQL Server</span></em></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='mso-ansi-language:EN-GB'>&nbsp;</span><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB'>If you have
+expertise in SQL Server, chances are you are very much familiar with working
+with <span class=SpellE><b style='mso-bidi-font-weight:normal'>ImageType</b></span>
+data that helps in storing and retrieving images from SQL Server. In this
+section, we talk about how we can work with <span class=SpellE>ImageType</span>
+in UE4.</span><span lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>To work with images, we first need to create one table in the
+database that has an <span class=SpellE><b style='mso-bidi-font-weight:normal'>ImageType</b></span>
+datatype. Let us assume we have created such a table, by executing the below
+query.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:623.6pt'><span lang=EN-US>CREATE TABLE [<span
+class=SpellE>dbo</span>]<span class=GramE>.[</span><span class=SpellE>ImageData</span>]
+(</span></p>
+
+<p class=MsoNormal style='margin-left:623.6pt'><span lang=EN-US><span
+style='mso-spacerun:yes'>        </span>[ID] [<span class=SpellE>int</span>]
+IDENTITY (1<span class=GramE>,1</span>) NOT NULL ,</span></p>
+
+<p class=MsoNormal style='margin-left:623.6pt'><span lang=EN-US><span
+style='mso-spacerun:yes'>        </span>[Picture] [<span class=GramE>image</span>]
+NULL </span></p>
+
+<p class=MsoNormal style='margin-left:623.6pt'><span lang=EN-US>) ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:226.75pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>Update Images<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:justify;line-height:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>To save an image to our table, we first need to browse for an
+image from our desktop. As of now, you cannot directly save UE4 Textures to
+your database. Instead, you can directly browse for an image of common type
+(Currently tested images are of format jpeg, and <span class=SpellE>png</span>)
+via Blueprints, by calling the function called <b style='mso-bidi-font-weight:
+normal'>Browse File.<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt;line-height:105%;mso-ansi-language:EN-GB;mso-fareast-language:
+EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_16"
+ o:spid="_x0000_i1028" type="#_x0000_t75" style='width:861pt;height:290.25pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image021.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1148 height=387
+src="User%20Manual_files/image022.gif" v:shapes="Picture_x0020_16"><![endif]></span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>This function will bring up a File Browser dialogue. On
+selecting the image file and clicking OK, the dialogue box will close and the
+function returns the file path. You may have your separate ways of retrieving
+image path from your desktop, so this function is pretty much optional.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>Once we have our image file path, we need to fire the
+function called <b style='mso-bidi-font-weight:normal'>Update Image from Query </b>that
+will update the image to the server. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='mso-ansi-language:EN-GB;mso-fareast-language:
+EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_20"
+ o:spid="_x0000_i1027" type="#_x0000_t75" style='width:948.75pt;height:317.25pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image023.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1265 height=423
+src="User%20Manual_files/image024.jpg" v:shapes="Picture_x0020_20"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:216.0pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%'><span
+style='mso-spacerun:yes'>                   </span><o:p></o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:216.0pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:18.0pt;
+line-height:105%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;color:#404040;
+mso-themecolor:text1;mso-themetint:191;mso-style-textfill-fill-color:#404040;
+mso-style-textfill-fill-themecolor:text1;mso-style-textfill-fill-alpha:100.0%;
+mso-style-textfill-fill-colortransforms:"lumm=75000 lumo=25000"'>Inputs<o:p></o:p></span></b></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Query</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'> – Here we enter our query. So if we want to insert an image in
+our Picture column, we need to enter it like this:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>INSERT INTO <span class=SpellE><span class=GramE>ImageData</span></span><span
+class=GramE>(</span> Picture)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>VALUES (@<span class=SpellE>img</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>If we want to insert values in other columns, we can do that as
+well.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>INSERT INTO <span class=SpellE><span class=GramE>ImageData</span></span><span
+class=GramE>(</span> ID , Picture)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>VALUES (0, @<span class=SpellE>img</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Update Parameter </span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>–This will contain the variable name which should be replaced by
+our image. In the query above, we are using the word <b style='mso-bidi-font-weight:
+normal'>@<span class=SpellE>img</span></b>. This is a common way of inserting
+dynamic data in SQL server, and you must be familiar with it if you have hands
+on experience in ADO.NET. So this input will take the same parameter as input,
+without <span class=GramE>the <b style='mso-bidi-font-weight:normal'>@</b></span>
+symbol, to help the program determine what variable is being used to represent
+image variable. So here we need to enter <span class=SpellE><b
+style='mso-bidi-font-weight:normal'>img</b></span>, as shown in the picture
+above. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
+mso-hansi-theme-font:minor-latin'>Image Path</span></b><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'>—<span class=GramE>Here</span> we are providing the image file
+path that we have received from the previous section. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm 0cm 1.0pt 0cm;
+margin-left:226.75pt;margin-right:226.75pt'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+mso-border-bottom-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span
+class=MsoSubtleEmphasis><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;font-style:normal'>&nbsp;</span></span><span
+class=MsoIntenseReference><span lang=EN-US style='font-size:18.0pt;line-height:
+105%'>SELECT Images<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:226.75pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt;text-align:justify;line-height:
+normal'><span lang=EN-US style='font-size:10.0pt;font-family:"Courier New";
+color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+0cm;margin-left:226.75pt;margin-bottom:.0001pt'><span lang=EN-US
+style='font-size:14.0pt;line-height:105%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>To select an image from SQL Server, we simply need to call
+the function called <b style='mso-bidi-font-weight:normal'>Select Image from
+Query </b>and enter our selection query here.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><span style='mso-spacerun:yes'> </span>You need to remember
+that you can select only one image at a time, so make sure your selection query
+only fetches a single image and nothing else. For example, when your table has
+a multiple rows, you cannot write <b style='mso-bidi-font-weight:normal'>Select
+Picture from <span class=SpellE>ImageData</span> </b>as that will fetch
+multiple values. Instead, you need to write something like<b style='mso-bidi-font-weight:
+normal'> Select Picture from <span class=SpellE>ImageData</span> Where ID=3</b>.
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='font-size:14.0pt;line-height:105%;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_21" o:spid="_x0000_i1026" type="#_x0000_t75" style='width:782.25pt;
+ height:270pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image025.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1043 height=360
+src="User%20Manual_files/image026.gif" v:shapes="Picture_x0020_21"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'>This function returns a Texture2D format, which you can use
+to display the image in your game.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span style='mso-ansi-language:EN-GB;mso-fareast-language:
+EN-GB;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_23"
+ o:spid="_x0000_i1025" type="#_x0000_t75" style='width:1076.25pt;height:441pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="User%20Manual_files/image027.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=1435 height=588
+src="User%20Manual_files/image028.jpg" v:shapes="Picture_x0020_23"><![endif]></span><span
+lang=EN-US style='font-size:14.0pt;line-height:105%'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:216.0pt;margin-bottom:
+8.0pt;margin-left:226.75pt'><span lang=EN-US style='font-size:14.0pt;
+line-height:105%'><o:p>&nbsp;</o:p></span></p>
 
 </div>
 
